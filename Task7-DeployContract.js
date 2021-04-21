@@ -21,7 +21,7 @@ web3.eth.getTransactionCount(account1, (err, txCount) =>{
         const txObject = { 
             nonce: web3.utils.toHex(txCount), //utils have web3 helper methods
             data: byteCodeBuffer,
-            gasLimit: web3.utils.toHex(100000), 
+            gasLimit: web3.utils.toHex(800000), 
             gasPrice: web3.utils.toHex(web3.utils.toWei("10", 'gwei'))
         }
         const tx = new Tx.Transaction(txObject, {chain: 'ropsten', hardfork: 'petersburg'});
@@ -38,7 +38,6 @@ web3.eth.getTransactionCount(account1, (err, txCount) =>{
             }
         }).then(receipt => {
             console.log(receipt);
-            console.log(receipt.contractAddress);
         });
     }
 })
